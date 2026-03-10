@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>企業詳細</title>
+</head>
+
+<body>
+
+<h1 id="name"></h1>
+
+<p id="address"></p>
+<p id="email"></p>
+
+<h2>協賛履歴</h2>
+
+<table border="1">
+<thead>
+<tr>
+<th>年度</th>
+<th>状況</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody id="records"></tbody>
+</table>
+
+<script>
+
+const params = new URLSearchParams(location.search)
+const id = params.get("id")
+
+fetch("data/companies.json")
+.then(res => res.json())
+.then(companies => {
+
+const company = companies.find(c => c.id === id)
+
+document.getElementById("name").textContent = company.name
+document.getElementById("address").textContent = "住所: " + company.address
+document.getElementById("email").textContent = "メール: " + company.email
+
+const tbody = document.getElementById("records")
+
+company.records.forEach(r=>{
+const tr=document.createElement("tr")
+
+tr.innerHTML = `
+<td>${r.year}</td>
+<td>${r.status}</td>
+<td>${r.note}</td>
+`
+
+tbody.appendChild(tr)
+
+})
+
+})
+
+</script>
+
+</body>
+</html>
