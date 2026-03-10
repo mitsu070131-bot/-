@@ -1,0 +1,25 @@
+backend:
+  name: github
+  repo: あなたのユーザー名/sponsor-site
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "companies"
+    label: "企業"
+    folder: "data/companies"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "企業名", name: "name", widget: "string"}
+      - {label: "読み仮名", name: "kana", widget: "string"}
+      - {label: "住所", name: "address", widget: "string"}
+      - {label: "メール", name: "email", widget: "string"}
+      - label: "協賛履歴"
+        name: "records"
+        widget: "list"
+        fields:
+          - {label: "年度", name: "year", widget: "number"}
+          - {label: "状況", name: "status", widget: "string"}
+          - {label: "備考", name: "note", widget: "string"}
