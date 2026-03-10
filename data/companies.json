@@ -1,0 +1,24 @@
+[
+  {
+    "id": "yamato",
+    "name": "ヤマト株式会社",
+    "kana": "やまと",
+    "address": "大阪府○○市",
+    "email": "info@example.com",
+    "records": [
+      {
+        "year": 2025,
+        "status": "○",
+        "note": "パンフ広告"
+      }
+    ]
+  },
+  {
+    "id": "abc",
+    "name": "ABC商店",
+    "kana": "えーびーしー",
+    "address": "大阪府△△市",
+    "email": "abc@example.com",
+    "records": []
+  }
+]
