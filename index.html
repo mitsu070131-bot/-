@@ -9,10 +9,40 @@
 
 <h1>協賛企業一覧</h1>
 
-<ul>
-<li>テスト株式会社</li>
-<li>サンプル商店</li>
-</ul>
+<input type="text" id="search" placeholder="企業名検索">
+
+<ul id="companyList"></ul>
+
+<script>
+
+fetch("data/companies.json")
+.then(res => res.json())
+.then(companies => {
+
+companies.sort((a,b)=>a.kana.localeCompare(b.kana,"ja"))
+
+const ul = document.getElementById("companyList")
+
+function show(list){
+ul.innerHTML=""
+list.forEach(c=>{
+const li=document.createElement("li")
+li.innerHTML=`<a href="company.html?id=${c.id}">${c.name}</a>`
+ul.appendChild(li)
+})
+}
+
+show(companies)
+
+document.getElementById("search").addEventListener("input",e=>{
+const q=e.target.value
+const filtered=companies.filter(c=>c.name.includes(q))
+show(filtered)
+})
+
+})
+
+</script>
 
 </body>
 </html>
